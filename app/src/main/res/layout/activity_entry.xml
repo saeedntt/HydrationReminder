@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EntryActivity">
+
+    <TextView
+        android:id="@+id/cText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="16dp"
+        android:text="In order for us to help you better please answer the following questions as truthfully as possible."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/cText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:text="What time do you usually wake up?"
+        app:layout_constraintBottom_toTopOf="@+id/wakeUpTimeH"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cText1" />
+
+    <EditText
+        android:id="@+id/wakeUpTimeH"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/cText3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cText2" />
+
+    <TextView
+        android:id="@+id/cText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text=":"
+        app:layout_constraintEnd_toStartOf="@+id/wakeUpTimeM"
+        app:layout_constraintStart_toEndOf="@+id/wakeUpTimeH"
+        app:layout_constraintTop_toBottomOf="@+id/cText2" />
+
+    <EditText
+        android:id="@+id/wakeUpTimeM"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/cText3"
+        app:layout_constraintTop_toBottomOf="@+id/cText2" />
+
+    <TextView
+        android:id="@+id/cText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="What time do you usually go back to bed?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wakeUpTimeM" />
+
+    <EditText
+        android:id="@+id/sleepTimeH"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/cText5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cText4" />
+
+    <TextView
+        android:id="@+id/cText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text=":"
+        app:layout_constraintEnd_toStartOf="@+id/sleepTimeM"
+        app:layout_constraintStart_toEndOf="@+id/sleepTimeH"
+        app:layout_constraintTop_toBottomOf="@+id/cText4" />
+
+    <EditText
+        android:id="@+id/sleepTimeM"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/cText5"
+        app:layout_constraintTop_toBottomOf="@+id/cText4" />
+
+    <TextView
+        android:id="@+id/cText6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="How many glasses of water do you drink on a daily basis?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sleepTimeH" />
+
+    <EditText
+        android:id="@+id/drunkenWaterAmount"
+        android:layout_width="53dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cText6" />
+
+    <TextView
+        android:id="@+id/cText7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="How do you prefer to be reminded to drink water?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drunkenWaterAmount" />
+
+    <RadioButton
+        android:id="@+id/waterReminderNotificationMethod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Notification"
+        app:layout_constraintEnd_toStartOf="@+id/waterReminderFullscreenMethod"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cText7" />
+
+    <RadioButton
+        android:id="@+id/waterReminderFullscreenMethod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Fullscreen Alarm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="@+id/waterReminderNotificationMethod"
+        app:layout_constraintTop_toBottomOf="@+id/cText7" />
+
+    <TextView
+        android:id="@+id/cText8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Should we make any sound when we alert you?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waterReminderNotificationMethod" />
+
+    <RadioButton
+        android:id="@+id/notificationSoundYes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Yes"
+        app:layout_constraintEnd_toStartOf="@+id/notificationSoundNo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cText8" />
+
+    <RadioButton
+        android:id="@+id/notificationSoundNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="No"
+        app:layout_constraintEnd_toStartOf="@+id/notificationSoundVibrate"
+        app:layout_constraintStart_toEndOf="@+id/notificationSoundYes"
+        app:layout_constraintTop_toBottomOf="@+id/cText8" />
+
+    <RadioButton
+        android:id="@+id/notificationSoundVibrate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Just Vibrate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/notificationSoundNo"
+        app:layout_constraintTop_toBottomOf="@+id/cText8" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
