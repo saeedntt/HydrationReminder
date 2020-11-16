@@ -35,6 +35,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="4dp"
+        android:inputType="time"
         app:layout_constraintEnd_toStartOf="@+id/cText3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cText2" />
@@ -55,8 +56,31 @@
         android:layout_height="35dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
+        android:inputType="time"
         app:layout_constraintStart_toEndOf="@+id/cText3"
         app:layout_constraintTop_toBottomOf="@+id/cText2" />
+
+    <TextView
+        android:id="@+id/wakeUpTimeError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:hint="Between 0 and 23"
+        android:textColor="#FA0000"
+        app:layout_constraintStart_toEndOf="@+id/wakeUpTimeM"
+        app:layout_constraintTop_toBottomOf="@+id/cText2" />
+
+    <TextView
+        android:id="@+id/sleepTimeError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:hint="Between 0 and 23"
+        android:textColor="#FA0000"
+        app:layout_constraintStart_toEndOf="@+id/wakeUpTimeM"
+        app:layout_constraintTop_toBottomOf="@+id/cText4" />
 
     <TextView
         android:id="@+id/cText4"
@@ -75,6 +99,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="4dp"
+        android:inputType="time"
         app:layout_constraintEnd_toStartOf="@+id/cText5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cText4" />
@@ -95,6 +120,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
+        android:inputType="time"
         app:layout_constraintStart_toEndOf="@+id/cText5"
         app:layout_constraintTop_toBottomOf="@+id/cText4" />
 
@@ -114,6 +140,7 @@
         android:layout_height="34dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cText6" />
 
@@ -187,5 +214,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/notificationSoundNo"
         app:layout_constraintTop_toBottomOf="@+id/cText8" />
+
+    <Button
+        android:id="@+id/entryPageSubmitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notificationSoundNo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
