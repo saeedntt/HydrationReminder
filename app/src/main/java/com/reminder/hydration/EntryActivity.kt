@@ -1,6 +1,7 @@
 package com.reminder.hydration
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -23,18 +24,19 @@ class EntryActivity : AppCompatActivity() {
         val waterReminderNotifGroup = findViewById<RadioGroup>(R.id.waterReminderNotifGroup)
         val notificationSoundGroup = findViewById<RadioGroup>(R.id.notificationSoundGroup)
         val entryPageSubmitButton = findViewById<Button>(R.id.entryPageSubmitButton)
-        val wakeUpTimeError = findViewById<TextView>(R.id.wakeUpTimeError)
-        val sleepTimeError = findViewById<TextView>(R.id.sleepTimeError)
+        val entryPageMessage = findViewById<TextView>(R.id.entryPageMessage)
 
         val viewModel: EntryViewModel by viewModels {
             EntryViewModelFactory(sharedPrefManager)
         }
 
         viewModel.error().observe(this) { error ->
-            //TODO: Show the error
+            setMessageAndColor(entryPageMessage, error, Color.RED)
         }
 
-        //TODO: Observe the warning and show the message
+        viewModel.warning().observe(this) { warning ->
+            setMessageAndColor(entryPageMessage, warning, Color.YELLOW)
+        }
 
         entryPageSubmitButton.setOnClickListener {
             val wakeUpTime = findViewById<EditText>(R.id.wakeUpTimeH).text.toString().toInt()
@@ -44,5 +46,10 @@ class EntryActivity : AppCompatActivity() {
             val soundType = SoundType.of(notificationSoundGroup.checkedRadioButtonId)
             viewModel.saveData(wakeUpTime, sleepTime, waterNum, notifType, soundType)
         }
+    }
+
+    private fun setMessageAndColor(entryPageMessage: TextView, error: String?, color: Int) {
+        entryPageMessage.text = error
+        entryPageMessage.setTextColor(color)
     }
 }

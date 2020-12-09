@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 
 class EntryViewModel(private val sharedPrefManager: SharedPrefManager) : ViewModel() {
     //TODO: Get the data from sharedpref and notify the view of the new data
+    private val wakeUpTime : MutableLiveData<Int> = MutableLiveData()
     private val warning: MutableLiveData<String> = MutableLiveData<String>()
     private val error: MutableLiveData<String> = MutableLiveData<String>()
 
@@ -16,15 +17,15 @@ class EntryViewModel(private val sharedPrefManager: SharedPrefManager) : ViewMod
     fun saveData(wakeUpTime: Int, sleepTime:Int, waterNum: Int, notifType: NotifType, soundType: SoundType) {
         val validated = validateData(wakeUpTime, sleepTime, waterNum)
         if (validated is Result.Error) {
-            error.value = validated.message
+            error.value = validated.error
             return
         }
         if (validated is Result.Ok && validated.warning.isNotEmpty()) {
             warning.value = validated.warning
         }
 
-        sharedPrefManager.save(wakeUpTimeKey, wakeUpTime)
         sharedPrefManager.save(sleepTimeKey, sleepTime)
+        sharedPrefManager.save(wakeUpTimeKey, wakeUpTime)
         sharedPrefManager.save(waterNumKey, waterNum)
         sharedPrefManager.save(notifTypeKey, notifType.value)
         sharedPrefManager.save(soundTypeKey, soundType.value)
