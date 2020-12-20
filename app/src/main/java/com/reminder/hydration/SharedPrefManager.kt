@@ -35,6 +35,9 @@ class SharedPrefManager private constructor(context: Context) {
 
     fun load(key: String, default: Int): Int = sharedPreferences.getInt(key, default)
     fun load(key: String, default: String): String? = sharedPreferences.getString(key, default)
+    fun load(key: String, default: SoundType ) : Int = sharedPreferences.getInt(key, default.value)
+    fun load(key: String, default: NotifType ) : Int = sharedPreferences.getInt(key, default.value)
+
 
 
     companion object {

@@ -3,6 +3,7 @@ package com.reminder.hydration
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
@@ -30,6 +31,29 @@ class EntryActivity : AppCompatActivity() {
             EntryViewModelFactory(sharedPrefManager)
         }
 
+        val wakeUpTime = findViewById<EditText>(R.id.wakeUpTimeH)
+        val sleepTime = findViewById<EditText>(R.id.sleepTimeH)
+        val waterNum = findViewById<EditText>(R.id.drunkenWaterAmount)
+        val notifType = NotifType.of(waterReminderNotifGroup.checkedRadioButtonId)
+        val soundType = SoundType.of(notificationSoundGroup.checkedRadioButtonId)
+
+        viewModel.loadData()
+        viewModel.wakeUpTime().observe(this) {
+            wakeUpTime.setText(it.toString())
+        }
+        viewModel.sleepTime().observe(this) {
+            sleepTime.setText(it.toString())
+        }
+        viewModel.drunkenWaterAmount().observe(this) {
+            waterNum.setText(it.toString())
+        }
+        //viewModel.notifType().observe(this) {
+
+        //}
+        viewModel.soundType().observe(this) {
+            Log.d("nima", "")
+        }
+
         viewModel.error().observe(this) { error ->
             setMessageAndColor(entryPageMessage, error, Color.RED)
         }
@@ -39,12 +63,10 @@ class EntryActivity : AppCompatActivity() {
         }
 
         entryPageSubmitButton.setOnClickListener {
-            val wakeUpTime = findViewById<EditText>(R.id.wakeUpTimeH).text.toString().toInt()
-            val sleepTime = findViewById<EditText>(R.id.sleepTimeH).text.toString().toInt()
-            val waterNum = findViewById<EditText>(R.id.drunkenWaterAmount).text.toString().toInt()
-            val notifType = NotifType.of(waterReminderNotifGroup.checkedRadioButtonId)
-            val soundType = SoundType.of(notificationSoundGroup.checkedRadioButtonId)
-            viewModel.saveData(wakeUpTime, sleepTime, waterNum, notifType, soundType)
+            val wakeUpTimeValue = wakeUpTime.text.toString().toInt()
+            val sleepTimeValue = sleepTime.text.toString().toInt()
+            val waterNumValue = waterNum.text.toString().toInt()
+            viewModel.saveData(wakeUpTimeValue, sleepTimeValue, waterNumValue, notifType, soundType)
         }
     }
 
