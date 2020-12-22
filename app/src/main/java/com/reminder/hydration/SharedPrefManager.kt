@@ -33,16 +33,15 @@ class SharedPrefManager private constructor(context: Context) {
         }
     }
 
-    fun load(key: String, default: Int): Int = sharedPreferences.getInt(key, default)
-    fun load(key: String, default: String): String? = sharedPreferences.getString(key, default)
-    fun load(key: String, default: SoundType ) : Int = sharedPreferences.getInt(key, default.value)
-    fun load(key: String, default: NotifType ) : Int = sharedPreferences.getInt(key, default.value)
-
+    fun load(key: String, default: Int) = sharedPreferences.getInt(key, default)
+    fun load(key: String, default: String) = sharedPreferences.getString(key, default)
+    fun load(key: String, default: Long ) = sharedPreferences.getLong(key, default)
+    fun load(key: String, default: Boolean ) = sharedPreferences.getBoolean(key, default)
 
 
     companion object {
         private var sharedPrefManagerInstance: SharedPrefManager? = null;
-        fun getInstance(context: Context) : SharedPrefManager {
+        fun getInstance(context: Context): SharedPrefManager {
             if (sharedPrefManagerInstance == null) {
                 synchronized(this) {
                     if (sharedPrefManagerInstance == null) {

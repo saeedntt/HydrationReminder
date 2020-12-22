@@ -129,6 +129,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
             android:checked="true"
+            android:tag="0"
             android:text="Notification" />
 
         <RadioButton
@@ -137,6 +138,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
+            android:tag="1"
             android:text="Fullscreen Alarm" />
 
     </RadioGroup>

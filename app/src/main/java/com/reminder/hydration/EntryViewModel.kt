@@ -2,6 +2,7 @@ package com.reminder.hydration
 
 import android.app.Notification
 import android.util.Log
+import android.widget.RadioButton
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,24 +15,23 @@ class EntryViewModel(private val sharedPrefManager: SharedPrefManager) : ViewMod
     private val sleepTimeData: MutableLiveData<Int> = MutableLiveData()
     private val drunkenWaterAmountData: MutableLiveData<Int> = MutableLiveData()
     private val soundTypeData: MutableLiveData<Int> = MutableLiveData()
-    //private val notifTypeData: MutableLiveData<NotifType> = MutableLiveData()
+    private val notifTypeData: MutableLiveData<Int> = MutableLiveData()
     private val warning: MutableLiveData<String> = MutableLiveData<String>()
     private val error: MutableLiveData<String> = MutableLiveData<String>()
 
     fun wakeUpTime(): LiveData<Int> = wakeUpTimeData
     fun sleepTime(): LiveData<Int> = sleepTimeData
     fun drunkenWaterAmount(): LiveData<Int> = drunkenWaterAmountData
+    fun notifType(): LiveData<Int> = notifTypeData
     fun soundType(): LiveData<Int> = soundTypeData
-    //fun notifType(): LiveData<NotifType> = notifTypeData
 
 
     fun loadData() {
         wakeUpTimeData.value = sharedPrefManager.load(wakeUpTimeKey, 0)
         sleepTimeData.value = sharedPrefManager.load(sleepTimeKey, 0)
         drunkenWaterAmountData.value = sharedPrefManager.load(waterNumKey, 0)
-        //Log.d("nima",""+SoundType.SOUND.value)
-        soundTypeData.value = sharedPrefManager.load(soundTypeKey, SoundType.SOUND)
-        //notifTypeData.value = sharedPrefManager.load(notifTypeKey, NotifType.of(0))
+        notifTypeData.value = sharedPrefManager.load(notifTypeKey, NotifType.NOTIFICATION.value)
+        soundTypeData.value = sharedPrefManager.load(soundTypeKey, SoundType.SOUND.value)
     }
 
 
@@ -42,8 +42,8 @@ class EntryViewModel(private val sharedPrefManager: SharedPrefManager) : ViewMod
         wakeUpTime: Int,
         sleepTime: Int,
         waterNum: Int,
-        notifType: NotifType,
-        soundType: SoundType
+        notifType: Int,
+        soundType: Int
     ) {
         val validated = validateData(wakeUpTime, sleepTime, waterNum)
         if (validated is Result.Error) {
@@ -57,8 +57,8 @@ class EntryViewModel(private val sharedPrefManager: SharedPrefManager) : ViewMod
         sharedPrefManager.save(sleepTimeKey, sleepTime)
         sharedPrefManager.save(wakeUpTimeKey, wakeUpTime)
         sharedPrefManager.save(waterNumKey, waterNum)
-        sharedPrefManager.save(notifTypeKey, notifType.value)
-        sharedPrefManager.save(soundTypeKey, soundType.value)
+        sharedPrefManager.save(notifTypeKey, notifType)
+        sharedPrefManager.save(soundTypeKey, soundType)
     }
 
     private fun validateData(wakeUpTime: Int, sleepTime: Int, waterNum: Int): Result {
