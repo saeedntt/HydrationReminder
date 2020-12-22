@@ -14,7 +14,7 @@ class EntryViewModel(private val sharedPrefManager: SharedPrefManager) : ViewMod
     private val sleepTimeData: MutableLiveData<Int> = MutableLiveData()
     private val drunkenWaterAmountData: MutableLiveData<Int> = MutableLiveData()
     private val soundTypeData: MutableLiveData<Int> = MutableLiveData()
-    //private val notifTypeData: MutableLiveData<NotifType> = MutableLiveData()
+    private val notifTypeData: MutableLiveData<Int> = MutableLiveData()
     private val warning: MutableLiveData<String> = MutableLiveData<String>()
     private val error: MutableLiveData<String> = MutableLiveData<String>()
 
@@ -22,16 +22,15 @@ class EntryViewModel(private val sharedPrefManager: SharedPrefManager) : ViewMod
     fun sleepTime(): LiveData<Int> = sleepTimeData
     fun drunkenWaterAmount(): LiveData<Int> = drunkenWaterAmountData
     fun soundType(): LiveData<Int> = soundTypeData
-    //fun notifType(): LiveData<NotifType> = notifTypeData
+    fun notifType(): LiveData<Int> = notifTypeData
 
 
     fun loadData() {
         wakeUpTimeData.value = sharedPrefManager.load(wakeUpTimeKey, 0)
         sleepTimeData.value = sharedPrefManager.load(sleepTimeKey, 0)
         drunkenWaterAmountData.value = sharedPrefManager.load(waterNumKey, 0)
-        //Log.d("nima",""+SoundType.SOUND.value)
-        soundTypeData.value = sharedPrefManager.load(soundTypeKey, SoundType.SOUND)
-        //notifTypeData.value = sharedPrefManager.load(notifTypeKey, NotifType.of(0))
+        soundTypeData.value = sharedPrefManager.load(soundTypeKey, SoundType.SOUND.value)
+        notifTypeData.value = sharedPrefManager.load(notifTypeKey, NotifType.NOTIFICATION.value)
     }
 
 
