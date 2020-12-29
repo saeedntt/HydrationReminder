@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 class EntryViewModel(private val sharedPrefManager: SharedPrefManager) : ViewModel() {
-    //TODO: Get the data from sharedpref and notify the view of the new data
 
     private val wakeUpTimeData: MutableLiveData<Int> = MutableLiveData()
     private val sleepTimeData: MutableLiveData<Int> = MutableLiveData()

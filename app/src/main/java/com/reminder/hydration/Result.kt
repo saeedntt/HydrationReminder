@@ -10,12 +10,6 @@ operator fun Result.plus(other: Result): Result {
         this
     else
         other
-/*    if (this > other)
-        return this
-
-    return other
-
- */
 }
 
 operator fun Result.compareTo(other: Result): Int {

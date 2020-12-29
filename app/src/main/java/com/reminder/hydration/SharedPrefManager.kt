@@ -34,9 +34,6 @@ class SharedPrefManager private constructor(context: Context) {
     }
 
     fun load(key: String, default: Int) = sharedPreferences.getInt(key, default)
-    fun load(key: String, default: String) = sharedPreferences.getString(key, default)
-    fun load(key: String, default: Long ) = sharedPreferences.getLong(key, default)
-    fun load(key: String, default: Boolean ) = sharedPreferences.getBoolean(key, default)
 
 
     companion object {

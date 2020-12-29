@@ -1,6 +1,5 @@
 package com.reminder.hydration
 
-import android.util.Log
 
 enum class NotifType(val value: Int) {
     NOTIFICATION(0),
